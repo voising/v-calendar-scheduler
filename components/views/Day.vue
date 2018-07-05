@@ -11,7 +11,7 @@
             <div class="v-cal-days__wrapper">
                 <div class="v-cal-day v-cal-day--day" :class="{ 'is-today': day.isToday }" v-if="day !== null">
                     <div class="v-cal-day__hour-block"
-                         @click="timeClicked({ date: day.d.toDate(), time: null }, $event)">
+                         @click="timeClicked({ date: day.d.toDate(), time: null, event: $event })">
                         <span class="v-cal-day__hour-block-fill">00:00 <template v-if="use12">PM</template></span>
                         <div class="v-cal-day__hour-content">
                             <div class="v-cal-event-list" :class="{'tiny-events': day.events.filter(e => !e.startTime).length > 2}">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="v-cal-day__hour-block"
-                         @click="timeClicked({ date: day.d.toDate(), time: time.hour() }, $event)"
+                         @click="timeClicked({ date: day.d.toDate(), time: time.hour(), event: $event })"
                          :class="[ time.isSame(now, 'hour') ? 'is-now' : '', hourClass ]" v-for="time in day.availableTimes">
                         <span class="v-cal-day__hour-block-fill">{{ time | formatTime(use12) }}</span>
                         <div class="v-cal-day__hour-content">
@@ -67,8 +67,8 @@
             this.buildCalendar();
         },
         methods: {
-            timeClicked(data, event) {
-                EventBus.$emit('time-clicked', data, event)
+            timeClicked(data) {
+                EventBus.$emit('time-clicked', data)
             },
             buildCalendar() {
                 let now = moment();
