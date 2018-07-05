@@ -23,6 +23,9 @@
                @click="timeClicked({ date: day.d.toDate(), time: null, event: $event })">
             <span class="v-cal-day__hour-block-fill">00:00 <template v-if="use12">PM</template></span>
             <div class="v-cal-day__hour-content">
+              <button class="button is-warning">
+                Apply default day
+              </button>
               <div class="v-cal-event-list" :class="{'tiny-events': day.events.filter(e => !e.startTime).length > 2}">
 
                 <event-item
@@ -135,5 +138,8 @@
 </script>
 
 <style scoped>
+  .button.is-warning {
+    margin-top: 6px;
+  }
 
 </style>
