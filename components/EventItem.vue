@@ -98,7 +98,8 @@
             },
             eventClasses() {
                 return {
-                    'is-overlapping': this.event.overlaps > 0
+                    'is-overlapping': this.event.overlaps > 0,
+                    'has-id': this.event.id
                 }
             }
         },

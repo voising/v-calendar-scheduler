@@ -309,7 +309,7 @@
                     maxDate: this.maxDate,
                     use12: this.use12,
                     events: this.newEvents.filter( event => {
-                        return event.date.isSame(this.activeDate, this.activeView);
+                        return event.date.isSame(this.activeDate, this.activeView == 'week' ? 'isoWeek' :  this.activeView);
                     })
                 };
 
