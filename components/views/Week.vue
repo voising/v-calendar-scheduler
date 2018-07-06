@@ -95,8 +95,8 @@
 
                 let now = moment();
 
-                let temp = moment( this.activeDate ).day(moment.localeData().firstDayOfWeek());
-                let w = temp.week();
+                let temp = moment( this.activeDate ).startOf('isoWeek')
+                let w = temp.isoWeek();
 
                 this.days = [];
 
@@ -125,7 +125,7 @@
                     this.days.push(newDay);
 
                     temp.add( 1, 'day' );
-                } while ( temp.week() === w );
+                } while ( temp.isoWeek() === w );
 
             }
         },
