@@ -330,8 +330,8 @@
                 }
 
                 if ( this.activeView === 'week' ) {
-                    const weekStart = moment(this.activeDate).day(0);
-                    const weekEnd = moment(this.activeDate).day(6);
+                    const weekStart = moment(this.activeDate).startOf('isoWeek');
+                    const weekEnd = moment(this.activeDate).endOf('isoWeek');
                     return weekStart.format('MMM D') + ' - ' + weekEnd.format('MMM D');
                 }
 
