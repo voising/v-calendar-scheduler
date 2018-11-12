@@ -97,10 +97,10 @@
                 return styles;
             },
             eventClasses() {
-                return {
+                return [{
                     'is-overlapping': this.event.overlaps > 0,
                     'has-id': this.event.id
-                }
+                }, `has-state-${this.event.state}`]
             }
         },
         filters: {
